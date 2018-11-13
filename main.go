@@ -1,7 +1,12 @@
 package main
 
-import "cmnd"
+import (
+	"cliapp/cmd"
+	"log"
+)
 
 func main() {
-	cmnd.Execute()
+	if err := cmd.RootCommand().Execute(); err != nil {
+		log.Fatal(err)
+	}
 }
