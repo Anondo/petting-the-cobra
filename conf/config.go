@@ -18,10 +18,14 @@ func LoadConfig(cmd *cobra.Command) error {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.AutomaticEnv()
 
-	configFile, err := cmd.Flags().GetString("config")
+	configFile := viper.GetString("config")
+	viper.BindEnv("name")
 
-	if err != nil {
-		return err
+	name := viper.GetString("name")
+	if name == "" {
+		fmt.Println("Warning: name not provided")
+	} else {
+		fmt.Println(name)
 	}
 
 	if configFile != "" {

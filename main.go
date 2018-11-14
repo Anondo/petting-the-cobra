@@ -1,8 +1,8 @@
 package main
 
 import (
-	"cliapp/cmd"
 	"log"
+	"petting-the-cobra/cmd"
 )
 
 func main() {

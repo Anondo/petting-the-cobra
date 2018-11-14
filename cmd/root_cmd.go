@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"cliapp/conf"
 	"log"
+	"petting-the-cobra/conf"
 
 	"github.com/spf13/cobra"
 )
