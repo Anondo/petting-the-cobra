@@ -34,15 +34,19 @@ func LoadConfig(cmd *cobra.Command) error {
 		// from a config file
 		viper.SetConfigName("config")
 		viper.AddConfigPath("./")
-		viper.AddConfigPath("$HOME/desktop/golang/src/cliapp")
+		//viper.AddConfigPath("$HOME/desktop/golang/src/petting-the-cobra")
 	}
 
 	// NOTE: this will require that you have config file somewhere in the paths specified. It can be reading from JSON, TOML, YAML, HCL, and Java properties files.
 	if err := viper.ReadInConfig(); err != nil {
 		return err
 	}
-
-	fmt.Printf("port: %d\n", viper.GetInt("port"))
+	port := viper.GetInt("port")
+	if port == 0 {
+		fmt.Printf("port: %d\n", viper.GetInt("settings.port"))
+	} else {
+		fmt.Printf("port: %d\n", viper.GetInt("port"))
+	}
 
 	return nil
 
